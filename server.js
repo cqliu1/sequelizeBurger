@@ -14,6 +14,9 @@ var methodOverride = require("method-override");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+// Requiring our models for syncing
+var db = require("./models");
+
 app.use(express.static("./public"));
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,8 +38,10 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // =============================================================
 require("./controllers/burgers_controller.js")(app);
 
-// starting our Express app
+// Syncing our sequelize models and then starting our Express app
 // =============================================================
-app.listen(PORT, function() {
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
+  });
 });
