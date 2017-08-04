@@ -24,14 +24,14 @@ let Router = function(app) {
 					burgers: result,
 					imgURL: imgURL
 				});	
-			});
+			})
 		);
 	});
 
 	app.put("/", function(req,res) {
 		let updateBurger = req.body;
 		db.Burger.update({
-			burger_name: newBurger.burger_name,
+			burger_name: updateBurger.burger_name,
 			devoured: true
 		}, {
 			where: {
@@ -42,7 +42,7 @@ let Router = function(app) {
 					burgers: result,
 					imgURL: imgURL
 				});	
-			});
+			})
 		);
 	});
 };
