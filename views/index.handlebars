@@ -1,0 +1,33 @@
+<div class="text-center" id="header">
+	<img src="{{imgURL}}">
+	<h1>Eat-Da-Burger!</h1>
+</div>
+
+<div class="clearfix">
+	<div class="pull-left col-md-6">
+	{{#each burgers}}
+		{{#unless devoured}}
+		<h2>
+			{{burger_name}} 
+			<button class="devour btn btn-lrg btn-default" id="{{id}}" data-burger="{{burger_name}}">Devour it!</button>
+		</h2>
+
+		{{/unless}}
+	{{/each}}
+	</div>
+
+	<div class="pull-right col-md-6">
+	{{#each burgers}}
+		{{#if devoured}}
+		<s class="devoured"><h2>{{burger_name}}</h2></s>
+		{{/if}}
+	{{/each}}
+	</div>
+
+	<div class="burger-form form-group col-md-12">
+		<label><h3>Add a new burger:</h3></label>
+		<input type="text" class="form-control" id="burger">
+		<button type="submit" class="form-control" id="burgers-submit">Add Burger!</button>
+	</div>
+
+</div
